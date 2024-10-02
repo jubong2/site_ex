@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>회원가입 예제</title>
+  </head>
+  <body>
+    <h1>아이디와 비밀번호 저장</h1>
+    <form id="loginForm">
+      <label for="userId">아이디 :</label>
+      <input type="text" id="userId" required />
+      <label for="userPassword">비밀번호 :</label>
+      <input type="password" id="userPassword" required /><br /><br />
+      <button type="submit">저장</button>
+    </form>
+    <button id="loadBtn">불러오기</button>
+    <div id="output">
+      <!-- js출력 -->
+    </div>
+    <script>
+      const loginForm = document.getElementById("loginForm");
+      const loadBtn = document.getElementById("loadBtn");
+      const output = document.getElementById("output");
+      //   저장하는 함수
+      loginForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const userId = document.getElementById("userId").value;
+        const userIPassword = document.getElementById("userPassword").value;
+        // 로컬 스토리지에 저장
+        localStorage.setItem("사용자아이디", userId);
+        localStorage.setItem("사용자비밀번호", userIPassword);
+        alert("사용자의 정보가 저장되었습니다.");
+        // 입력값 초기화
+        document.getElementById("userId").value = "";
+        document.getElementById("userPassword").value = "";
+      });
+      //   불러오기 함수
+      loadBtn.addEventListener("click", () => {
+        const storaedUserId = localStorage.getItem("사용자아이디");
+        const storaedUserPassword = localStorage.getItem("사용자비밀번호");
+        if (storaedUserId && storaedUserPassword) {
+          output.innerHTML = `<p><strong>아이디:${storaedUserId}</strong></p><p><strong>아이디:${storaedUserPassword}</strong></p>`;
+        } else {
+          output.innerHTML = `저장된 정보가 없습니다.`;
+        }
+      });
+    </script>
+  </body>
+</html>
