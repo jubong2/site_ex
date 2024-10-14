@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="warp">
+      <h1>고양이 정보</h1>
+      <div class="catList">
+        <!-- sjs 출력 -->
+      </div>
+      <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const datId = urlParams.get("id");
+        // console.log(catId);
+        fetch("cat.json")
+          .then((response) => response.json())
+          .then(function (data) {
+            // console.log(data);
+            const catListDiv = document.getElementById("catList");
+            const cat = data.find((cat) => cat.id === parseInt(carId));
+            // console.log(cat);
+            if (cat) {
+                const catCard = document,createElement("div")
+                catCard.className
+            }
+          })
+          .catch((error) => {
+            console.error("데이터를 가져오는 중 에러가 바생했습니다".error);
+          });
+        dispa;
+      </script>
+    </div>
+  </body>
+</html>
